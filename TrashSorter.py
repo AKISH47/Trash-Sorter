@@ -15,8 +15,8 @@ model = load_model("predictWaste12.h5")
 output_class = ["battery", "biological", "brown-glass", "cardboard", "clothes", "green-glass", "metal", "paper", "plastic", "shoes", "trash", "white-glass"]
 
 cap = cv2.VideoCapture(0)
-recycle = ["shoes", "metal", "paper", "plastic", "cardboard","clothes"]
-trash = ["battery", "biological", "trash"]
+recycle = ["shoes", "metal", "paper", "plastic", "cardboard","clothes"] #variable to store recyclable trash
+trash = ["battery", "biological", "trash"] #variable to store non-recyclable trash
 def waste_prediction(test_image):
    test_image = cv2.resize(test_image, (224, 224)) 
    test_image = image.img_to_array(test_image) / 255
@@ -26,7 +26,7 @@ def waste_prediction(test_image):
    predicted_accuracy = round(np.max(predicted_array) * 100, 2)
    if predicted_accuracy >= 80:
       return predicted_value
-      
+ #Serial communication between arduino and computer     
 with serial.Serial('/dev/ttyACM0', 9600, timeout=10) as ser:
     while True:
         if ser.readline() == b'trash detected\r\n':

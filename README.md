@@ -26,5 +26,4 @@ Uses pretrained model on github ---> https://github.com/supriya811106/Garbage-Cl
 
 
 ## Demo
-
 https://www.youtube.com/watch?v=_-10fk5lNXI
